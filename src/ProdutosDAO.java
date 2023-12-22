@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProdutosDAO {
@@ -39,5 +40,32 @@ public class ProdutosDAO {
         System.out.println("Erro ao inserir empresa: " + e.getMessage());
     }
 }
+     
+     public List<ProdutosDTO> getProdutos() {
+                String sql = "SELECT * FROM produtos";
+                
+                try {
+                    PreparedStatement stmt = this.conn.prepareStatement(sql);
+                    ResultSet rs = stmt.executeQuery();            
+                    
+                    List<ProdutosDTO> listaProdutos = new ArrayList<>();
+                    
+                    while (rs.next()) { //.next retorna verdadeiro caso exista uma próxima posição dentro do array
+                        ProdutosDTO produtosDTO = new ProdutosDTO();
+                        
+                        produtosDTO.setId(rs.getInt("id"));
+                        produtosDTO.setNome(rs.getString("nome"));
+                        produtosDTO.setValor(rs.getString("valor"));
+                        produtosDTO.setStatus(rs.getString("status"));
+                        
+                        listaProdutos.add(produtosDTO);    
+                    }
+                    return listaProdutos;
+                    
+                    //Se o método entrar no "Catch" quer dizer que não encontrou nenhuma empresa, então damos um "return null"
+                } catch (Exception e) {
+                    return null;
+                }
+            }
 }
 
