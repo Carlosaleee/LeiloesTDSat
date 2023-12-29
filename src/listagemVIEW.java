@@ -83,13 +83,15 @@ import javax.swing.table.TableRowSorter;
         jLabel2.setFont(new java.awt.Font("Lucida Fax", 1, 18)); // NOI18N
         jLabel2.setText("Vender Produto (ID)");
 
+        id_produto_venda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         id_produto_venda.setToolTipText("Digite o ID do Produto");
         jScrollPane2.setViewportView(id_produto_venda);
 
         btnVender.setBackground(new java.awt.Color(204, 204, 204));
-        btnVender.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVender.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVender.setForeground(new java.awt.Color(0, 0, 0));
         btnVender.setText("Vender");
+        btnVender.setToolTipText("Confirmar Venda do Produto");
         btnVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVenderActionPerformed(evt);
@@ -99,7 +101,7 @@ import javax.swing.table.TableRowSorter;
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         btnConsultarVendas.setBackground(new java.awt.Color(204, 204, 204));
-        btnConsultarVendas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsultarVendas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnConsultarVendas.setForeground(new java.awt.Color(0, 0, 0));
         btnConsultarVendas.setText("Consultar Vendas");
         btnConsultarVendas.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +111,7 @@ import javax.swing.table.TableRowSorter;
         });
 
         btnVoltar.setBackground(new java.awt.Color(204, 204, 204));
-        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("Voltar");
         btnVoltar.setToolTipText("Voltar a Tela Principal");
@@ -127,21 +129,19 @@ import javax.swing.table.TableRowSorter;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnVoltar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnConsultarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnVender))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnVender))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnVoltar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnConsultarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addComponent(jLabel1)))
@@ -162,7 +162,7 @@ import javax.swing.table.TableRowSorter;
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultarVendas)
                     .addComponent(btnVoltar))
@@ -173,7 +173,15 @@ import javax.swing.table.TableRowSorter;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
+       String id = id_produto_venda.getText();
+       ProdutosDAO produtosDAO = new ProdutosDAO();
        
+       produtosDAO.venderProdutos(Integer.parseInt(id));
+       
+       id_produto_venda.setText("");
+       id_produto_venda.requestFocus();
+       
+     
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnConsultarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarVendasActionPerformed
@@ -182,7 +190,7 @@ import javax.swing.table.TableRowSorter;
     }//GEN-LAST:event_btnConsultarVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        this.dispose();
+       dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**

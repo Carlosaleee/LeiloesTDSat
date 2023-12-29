@@ -21,7 +21,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         
         btnCadastrar.setMnemonic(KeyEvent.VK_C);
         btnProdutos.setMnemonic(KeyEvent.VK_P);
-        btnSair.setMnemonic(KeyEvent.VK_S);
+        btnVoltar.setMnemonic(KeyEvent.VK_S);
         
     }
     
@@ -39,7 +39,9 @@ public class cadastroVIEW extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         btnCadastrar = new javax.swing.JButton();
         btnProdutos = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtStatus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,10 +53,10 @@ public class cadastroVIEW extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Cadastre um novo produto.");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Nome:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Valor:");
 
         txtNome.setToolTipText("Digite o Nome do Produto.");
@@ -92,16 +94,19 @@ public class cadastroVIEW extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setBackground(new java.awt.Color(204, 204, 204));
-        btnSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setText("Sair");
-        btnSair.setToolTipText("Cadastrar");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setBackground(new java.awt.Color(204, 204, 204));
+        btnVoltar.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setText("Voltar");
+        btnVoltar.setToolTipText("Cadastrar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Status :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,21 +114,19 @@ public class cadastroVIEW extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSair)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(72, 72, 72)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addGap(31, 31, 31)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNome)
-                                .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)))
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel2))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                                .addComponent(txtValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                                .addComponent(txtStatus, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(37, 37, 37)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -134,11 +137,17 @@ public class cadastroVIEW extends javax.swing.JFrame {
                         .addGap(230, 230, 230)
                         .addComponent(btnCadastrar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jLabel1)))
+                        .addGap(193, 193, 193)
+                        .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(btnVoltar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,25 +157,29 @@ public class cadastroVIEW extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(36, 36, 36)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(34, 34, 34)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(29, 29, 29)
                 .addComponent(btnCadastrar)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProdutos)
-                    .addComponent(btnSair))
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnProdutos)
+                .addGap(18, 18, 18)
+                .addComponent(btnVoltar)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,17 +195,20 @@ public class cadastroVIEW extends javax.swing.JFrame {
         if (!emptyFields()/* && validarValor(txtValor.getText())*/) {
         String nome = txtNome.getText();
         String valor = txtValor.getText();
+        String status = txtStatus.getText();
         
         ProdutosDTO novoProdutosDTO = new ProdutosDTO();
         
         novoProdutosDTO.setNome(nome);
         novoProdutosDTO.setValor(valor);
+        novoProdutosDTO.setStatus(status);
         ProdutosDAO produtosDAO = new ProdutosDAO();
         produtosDAO.inserir(novoProdutosDTO);
 
         JOptionPane.showMessageDialog(null, "Os seguintes dados foram cadastrados com sucesso: \n"
                 + "\nNome: " + nome
                 + "\nValor: " + valor
+                 + "\nStatus: " + status
         );
 
         txtNome.setText("");
@@ -205,11 +221,12 @@ public class cadastroVIEW extends javax.swing.JFrame {
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
         listagemVIEW listagem = new listagemVIEW(); 
         listagem.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnProdutosActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSairActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+       dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,14 +266,16 @@ public class cadastroVIEW extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnProdutos;
-    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 

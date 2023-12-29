@@ -7,12 +7,11 @@
 
 import java.sql.PreparedStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 public class ProdutosDAO {
@@ -63,9 +62,26 @@ public class ProdutosDAO {
                     return listaProdutos;
                     
                     //Se o método entrar no "Catch" quer dizer que não encontrou nenhuma empresa, então damos um "return null"
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     return null;
                 }
             }
+     
+     public void venderProdutos (int id){
+      
+         String sql = "UPDATE produtos SET status=? where id=?";
+         try{
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+          
+            stmt.setString(1, "Vendido");
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Produto Atualizado com Sucesso.");
+         
+         }catch (SQLException ex){
+         System.out.println("Erro ao vender Produto " + ex.getMessage());
+         }
+     }
 }
 
