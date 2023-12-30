@@ -49,7 +49,8 @@ public class TelaPrincipalVIEW extends javax.swing.JFrame {
         btnCadastro.setBackground(new java.awt.Color(204, 204, 204));
         btnCadastro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCadastro.setForeground(new java.awt.Color(0, 0, 0));
-        btnCadastro.setText("Cadastro Produtos");
+        btnCadastro.setText("Cadastro ");
+        btnCadastro.setToolTipText("Cadastro de Produtos");
         btnCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastroActionPerformed(evt);
@@ -59,7 +60,7 @@ public class TelaPrincipalVIEW extends javax.swing.JFrame {
         btnCompras.setBackground(new java.awt.Color(204, 204, 204));
         btnCompras.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCompras.setForeground(new java.awt.Color(0, 0, 0));
-        btnCompras.setText("Lista de Compras");
+        btnCompras.setText("Compras");
         btnCompras.setToolTipText("Listagem de Produtos.");
         btnCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +71,13 @@ public class TelaPrincipalVIEW extends javax.swing.JFrame {
         btnVendas.setBackground(new java.awt.Color(204, 204, 204));
         btnVendas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVendas.setForeground(new java.awt.Color(0, 0, 0));
-        btnVendas.setText("Lista de Vendas");
+        btnVendas.setText("Vendas");
         btnVendas.setToolTipText("Listagem de Produtos Vendidos");
+        btnVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasActionPerformed(evt);
+            }
+        });
 
         btnSair.setBackground(new java.awt.Color(204, 204, 204));
         btnSair.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -87,6 +93,7 @@ public class TelaPrincipalVIEW extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 102, 102));
         jLabel2.setText("Catálogo de Produtos");
+        jLabel2.setToolTipText("Escolh uma Opção para Navegar no Sistema.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,10 +117,10 @@ public class TelaPrincipalVIEW extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCadastro)
-                            .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnCompras, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                            .addComponent(btnVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                            .addComponent(btnCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(204, 204, 204))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSair)
@@ -170,6 +177,11 @@ public class TelaPrincipalVIEW extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+         vendasVIEW vendas = new vendasVIEW(); 
+         vendas.setVisible(true);
+    }//GEN-LAST:event_btnVendasActionPerformed
 
     /**
      * @param args the command line arguments

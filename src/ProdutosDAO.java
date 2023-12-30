@@ -83,5 +83,32 @@ public class ProdutosDAO {
          System.out.println("Erro ao vender Produto " + ex.getMessage());
          }
      }
+     
+     public List<ProdutosDTO> getProdutosVendidos() {
+                String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
+                
+                try {
+                    PreparedStatement stmt = this.conn.prepareStatement(sql);
+                    ResultSet rs = stmt.executeQuery();            
+                    
+                    List<ProdutosDTO> listaProdutosVendidos = new ArrayList<>();
+                    
+                    while (rs.next()) { //.next retorna verdadeiro caso exista uma próxima posição dentro do array
+                        ProdutosDTO produtosDTO = new ProdutosDTO();
+                        
+                        produtosDTO.setId(rs.getInt("id"));
+                        produtosDTO.setNome(rs.getString("nome"));
+                        produtosDTO.setValor(rs.getString("valor"));
+                        produtosDTO.setStatus(rs.getString("status"));
+                        
+                        listaProdutosVendidos.add(produtosDTO);    
+                    }
+                    return listaProdutosVendidos;
+                    
+                    //Se o método entrar no "Catch" quer dizer que não encontrou nenhuma empresa, então damos um "return null"
+                } catch (SQLException e) {
+                    return null;
+                }
+            }
 }
 
